@@ -8,6 +8,7 @@ import MealPlanPage from "./pages/MealPlanPage";
 import SearchFoodPage from "./pages/SearchFoodPage";
 import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
+import RecoverPassword from "./pages/RecoverPassword"
 import Shell from "./Shell";
 
 const UnauthenticatedRoutes = () => (
@@ -18,6 +19,9 @@ const UnauthenticatedRoutes = () => (
       </Route>
       <Route exact path="/signUpPage">
         <SignUpPage />
+      </Route>
+      <Route exact path="/reset_password">
+        <RecoverPassword/>
       </Route>
       <Route path="/">
         <HomePage />

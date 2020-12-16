@@ -10,5 +10,9 @@ router.route("/").post(userController.createUser);
 //   .route("/:id")
 //   .get(userController.findById)
 //   .delete(userController.remove);
-
+router
+  .route("/:id")
+  .get(userController.getOneUser)
+  .put(userController.updateUser);
+  
 module.exports = router;

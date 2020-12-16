@@ -3,23 +3,26 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 mongoose.promise = Promise;
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    unique: false,
-    required: false,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      unique: false,
+      required: false,
+    },
+    email: {
+      type: String,
+      unique: false,
+      required: false,
+    },
+    password: {
+      type: String,
+      unique: false,
+      required: false,
+    },
   },
-  email: {
-    type: String,
-    unique: false,
-    required: false,
-  },
-  password: {
-    type: String,
-    unique: false,
-    required: false,
-  },
-});
+  { timestamps: true }
+);
 
 userSchema.methods = {
   checkPassword: function (inputPassword) {
