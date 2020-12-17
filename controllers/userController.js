@@ -18,7 +18,6 @@ module.exports = {
 
   getOneUser: (req, res) => {
     db.User.findOne({ _id: req.params.id })
-      .populate("trips")
       .exec()
       .then(user => {
         res.status(200).json(user)

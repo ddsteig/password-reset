@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 import React from "react";
@@ -41,9 +41,11 @@ function UserPage() {
   return (
     <React.Fragment>
       <NavTabs user={user} />
-      <Typography variant="h6" style={{ textAlign: "center" }}>
+      <Box m={6}>
+      <Typography variant="h2" style={{ textAlign: "center" }}>
         Hello, {user}
       </Typography>
+      </Box>
       <Grid
         container
         className={classes.containerInfo}

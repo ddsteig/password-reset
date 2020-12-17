@@ -5,6 +5,7 @@ import {
   MenuItem,
   TextField,
   Typography,
+  Box,
 } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -89,9 +90,11 @@ function SearchFoodPage() {
   return (
     <React.Fragment>
       <NavTabs user={user} />
-      <Typography variant="h2" style={{ textAlign: "center" }}>
-        Food Search 🍗
+      <Box m={6}>
+        <Typography variant="h2" style={{ textAlign: "center" }}>
+          Food Search 🍗
       </Typography>
+      </Box>
       <Snackbar
         open={successOpen}
         autoHideDuration={6000}
@@ -157,21 +160,29 @@ function SearchFoodPage() {
             </FormGroup>
           </Grid>
         </Grid>
-        {meals ? (
-          meals.map((meal) => {
-            return (
-              <DisplayFood
-                key={meals.indexOf(meal)}
-                {...meal}
-                userId={userId}
-                handleSuccess={handleSuccess}
-                handleError={handleError}
-              />
-            );
-          })
-        ) : (
-          <h3>No foods to display</h3>
-        )}
+        <Box m={5}></Box>
+        <Grid
+          container
+          alignContent="center"
+          justify="center"
+          alignItems="center"
+        >
+          {meals ? (
+            meals.map((meal) => {
+              return (
+                <DisplayFood
+                  key={meals.indexOf(meal)}
+                  {...meal}
+                  userId={userId}
+                  handleSuccess={handleSuccess}
+                  handleError={handleError}
+                />
+              );
+            })
+          ) : (
+              <h3>No foods to display</h3>
+            )}
+        </Grid>
       </Grid>
     </React.Fragment>
   );
