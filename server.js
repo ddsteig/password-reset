@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 5000;
 
 const authRoutes = require("./routes/route");
 const routes = require("./routes");
-const emailRouter = require("./routes/emailRouter");
 
 const cookieParser = require("cookie-parser");
 
@@ -24,7 +23,7 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use("/auth", authRoutes);
 app.use(routes);
-app.use("/reset_password", emailRouter);
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

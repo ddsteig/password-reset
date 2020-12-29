@@ -1,6 +1,6 @@
 const router = require("express").Router()
-const emailController = require("../controllers/emailController");
-const userController = require("../controllers/userController");
+const emailController = require("../../controllers/emailController");
+const userController = require("../../controllers/userController");
 
 router.route("/user/:email").get(userController.getOneUser).post(emailController.sendPasswordResetEmail)
 
