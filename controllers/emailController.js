@@ -33,9 +33,9 @@ module.exports = {
   usePasswordHashToMakeToken: ({
     password: passwordHash,
     _id: userId,
-    createdAt,
+    createdAt: time,
   }) => {
-    const secret = passwordHash + "-" + createdAt;
+    const secret = passwordHash + "-" + time;
     const token = jwt.sign({ userId }, secret, {
       expiresIn: 3600, // 1 hour
     });
