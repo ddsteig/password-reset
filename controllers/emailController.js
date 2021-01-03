@@ -17,9 +17,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const db = require("../database/models");
 // import { User } from "../../database/models/user";
-const transporter = require("../util/email");
-const getPasswordResetURL = require("../util/email");
-const resetPasswordTemplate = require("../util/email");
+const {transporter} = require("../util/email");
+const {getPasswordResetURL} = require("../util/email");
+const {resetPasswordTemplate} = require("../util/email");
 // import {
 //   transporter,
 //   getPasswordResetURL,
@@ -28,20 +28,20 @@ const resetPasswordTemplate = require("../util/email");
 
 // `secret` is passwordHash concatenated with user's createdAt,
 // so if someones gets a user token they still need a timestamp to intercept.
+usePasswordHashToMakeToken = ({
+  password: passwordHash,
+  _id: userId,
+  createdAt: time,
+}) => {
+  const secret = passwordHash + "-" + time;
+  const token = jwt.sign({ userId }, secret, {
+    expiresIn: 3600, // 1 hour
+  });
+  return token;
+},
 module.exports = {
 
-  usePasswordHashToMakeToken: ({
-    password: passwordHash,
-    _id: userId,
-    createdAt: time,
-  }) => {
-    const secret = passwordHash + "-" + time;
-    const token = jwt.sign({ userId }, secret, {
-      expiresIn: 3600, // 1 hour
-    });
-    console.log(token)
-    return token;
-  },
+ 
 
   /*** Calling this function with a registered user's email sends an email IRL ***/
   /*** I think Nodemail has a free service specifically designed for mocking   ***/
@@ -49,23 +49,22 @@ module.exports = {
     const { email } = req.params;
     let user;    
     try {
-      user = await db.User.findOne({ email });
-      console.log(user)
-      return(user)
+      user = await (await db.User.findOne({ email })).execPopulate();         
     } catch (err) {
       res.status(404).json("No user with that email");
     }
+    
     const token = usePasswordHashToMakeToken(user);
     const url = getPasswordResetURL(user, token);
     const emailTemplate = resetPasswordTemplate(user, url);
    
     const sendEmail = () => {
-      console.log(token)
+      console.log(emailTemplate)
       transporter.sendMail(emailTemplate, (err, info) => {
         if (err) {
           res.status(500).json("Error sending email");
         }
-        console.log(`** Email sent **`, info.response);
+        console.log(`** Email sent **`, info);
       });
     };
     sendEmail();
