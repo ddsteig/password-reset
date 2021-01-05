@@ -9,6 +9,7 @@ import SearchFoodPage from "./pages/SearchFoodPage";
 import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
 import RecoverPassword from "./pages/RecoverPassword"
+import UpdatePassword from "./pages/UpdatePassword"
 import Shell from "./Shell";
 
 const UnauthenticatedRoutes = () => (
@@ -23,7 +24,8 @@ const UnauthenticatedRoutes = () => (
       <Route exact path="/reset_password">
         <RecoverPassword/>
       </Route>
-      <Route path="/">
+      <Route path="/password/reset/" component={UpdatePassword}/>
+        <Route path="/">
         <HomePage />
       </Route>
       <Route path="*">

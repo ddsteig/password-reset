@@ -3,6 +3,7 @@ const foodMealRoutes = require("./apifood");
 const mealRoutes = require("./meals");
 const userRoutes = require("./userDatabase");
 const emailRouter = require("./emailRouter")
+const passwordRouter = require("./passwordRouter")
 
 // Meal routes
 router.use("/meals", mealRoutes);
@@ -14,5 +15,7 @@ router.use("/getfoods", foodMealRoutes);
 router.use("/users", userRoutes);
 
 router.use("/reset_password", emailRouter);
+
+router.use("/password/reset", passwordRouter)
 
 module.exports = router;

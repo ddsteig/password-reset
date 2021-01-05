@@ -38,10 +38,9 @@ usePasswordHashToMakeToken = ({
     expiresIn: 3600, // 1 hour
   });
   return token;
-},
-module.exports = {
+}
 
- 
+module.exports = { 
 
   /*** Calling this function with a registered user's email sends an email IRL ***/
   /*** I think Nodemail has a free service specifically designed for mocking   ***/
@@ -62,7 +61,7 @@ module.exports = {
       console.log(emailTemplate)
       transporter.sendMail(emailTemplate, (err, info) => {
         if (err) {
-          res.status(500).json("Error sending email");
+          res.status(500).json("Error sending email");          
         }
         console.log(`** Email sent **`, info);
       });

@@ -11,7 +11,7 @@ transporter: nodemailer.createTransport({
 }),
 
 getPasswordResetURL: (user, token) =>
-    `http://localhost:3000/password/reset/${user._id}/${token}`,
+    `http://localhost:3000/password_reset/receive_new_password/${user._id}/${token}`,
 
 resetPasswordTemplate: (user, url) => {
   const from = process.env.EMAIL_LOGIN

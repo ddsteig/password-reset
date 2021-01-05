@@ -27,7 +27,7 @@ class UpdatePassword extends Component {
 
     axios
       .post(
-        `${SERVER_URI}/reset_password/receive_new_password/${userId}/${token}`,
+        `receive_new_password/${userId}/${token}`,
         { password }
       )
       .then(res => res)
