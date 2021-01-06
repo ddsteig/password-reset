@@ -24,7 +24,7 @@ const UnauthenticatedRoutes = () => (
       <Route exact path="/reset_password">
         <RecoverPassword/>
       </Route>
-      <Route path="/password/reset/" component={UpdatePassword}/>
+      <Route path="/password/reset/:userId/:token" component={UpdatePassword}/>
         <Route path="/">
         <HomePage />
       </Route>

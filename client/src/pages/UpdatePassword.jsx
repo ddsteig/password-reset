@@ -15,11 +15,11 @@ class UpdatePassword extends Component {
     confirmPassword: "",
     submitted: false
   }
-
+  
   handleChange = key => e => {
     this.setState({ [key]: e.target.value })
-  }
-
+  }  
+  
   updatePassword = e => {
     e.preventDefault()
     const { userId, token } = this.props
@@ -27,7 +27,7 @@ class UpdatePassword extends Component {
 
     axios
       .post(
-        `receive_new_password/${userId}/${token}`,
+        `${token}`,
         { password }
       )
       .then(res => res)
@@ -44,54 +44,54 @@ class UpdatePassword extends Component {
         {submitted ? (
           <div className="reset-password-form-sent-wrapper">
             <p>Your password has been saved.</p>
-            <Link to="/login" className="ghost-btn">
+            <Link to="/loginPage" className="ghost-btn">
               Sign back in
             </Link>
           </div>
         ) : (
-          <div className="reset-password-form-wrapper">
-            <form
-              onSubmit={this.updatePassword}
-              style={{ paddingBottom: "1.5rem" }}
-            >
-              <GhostInput
-                onChange={this.handleChange("password")}
-                value={this.state.password}
-                placeholder="New password"
-                type="password"
-              />
-              <GhostInput
-                onChange={this.handleChange("confirmPassword")}
-                value={this.state.confirmPassword}
-                placeholder="Confirm password"
-                type="password"
-              />
-
-              <Button className="btn-primary password-reset-btn">
-                Update password
-              </Button>
-            </form>
-
-            <p
-              style={{
-                fontSize: "1rem",
-                maxWidth: "420px",
-                paddingLeft: "0.5rem"
-              }}
-            >
-              Make sure it's at least 8 characters including a number and a
-              lowercase letter. Read some documentation on{" "}
-              <a
-                href="https://help.github.com/articles/creating-a-strong-password/"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="reset-password-form-wrapper">
+              <form
+                onSubmit={this.updatePassword}
+                style={{ paddingBottom: "1.5rem" }}
               >
-                safer password practices
+                <GhostInput
+                  onChange={this.handleChange("password")}
+                  value={this.state.password}
+                  placeholder="New password"
+                  type="password"
+                />
+                <GhostInput
+                  onChange={this.handleChange("confirmPassword")}
+                  value={this.state.confirmPassword}
+                  placeholder="Confirm password"
+                  type="password"
+                />
+
+                <Button className="btn-primary password-reset-btn">
+                  Update password
+              </Button>
+              </form>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  maxWidth: "420px",
+                  paddingLeft: "0.5rem"
+                }}
+              >
+                Make sure it's at least 8 characters including a number and a
+              lowercase letter. Read some documentation on{" "}
+                <a
+                  href="https://help.github.com/articles/creating-a-strong-password/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  safer password practices
               </a>
               .
             </p>
-          </div>
-        )}
+            </div>
+          )}
       </UpdatePasswordStyles>
     )
   }
