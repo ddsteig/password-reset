@@ -15,16 +15,18 @@ class UpdatePassword extends Component {
     confirmPassword: "",
     submitted: false
   }
-  
+
   handleChange = key => e => {
     this.setState({ [key]: e.target.value })
-  }  
-  
+  }
+
   updatePassword = e => {
     e.preventDefault()
-    const { userId, token } = this.props
+    const { userId, token } = this.props.match.params
     const { password } = this.state
 
+    console.log(this.params)
+    
     axios
       .post(
         `${token}`,
