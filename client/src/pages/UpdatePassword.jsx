@@ -25,11 +25,11 @@ class UpdatePassword extends Component {
     const { userId, token } = this.props.match.params
     const { password } = this.state
 
-    console.log(this.params)
+    console.log(userId)
+    console.log(token)
+    console.log(password)
     
-    axios
-      .post(
-        `${token}`,
+    axios.post(`/api/password/reset/${userId}/${token}`,
         { password }
       )
       .then(res => res)

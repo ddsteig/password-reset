@@ -12,7 +12,6 @@
  * invalidating the secret key that references the old password
  * Reference: https://www.smashingmagazine.com/2017/11/safe-password-resets-with-json-web-tokens/
  **/
-
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const db = require("../database/models");
@@ -72,6 +71,10 @@ module.exports = {
   receiveNewPassword: (req, res) => {
     const { userId, token } = req.params;
     const { password } = req.body;
+
+    console.log(userId)
+    console.log(token)
+    console.log(password)
 
     db.User.findOne({ _id: userId })
 

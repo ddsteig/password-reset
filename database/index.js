@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/forage",{
     useCreateIndex: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }
