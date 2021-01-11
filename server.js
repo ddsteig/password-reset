@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-// const bodyParser = require('body-parser')
 const dbConnection = require("./database");
 const logger = require("morgan");
 const app = express();
@@ -18,8 +17,6 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-// app.use(bodyParser.json({limit: '50mb'}));
-// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 dbConnection;
 
 app.use(express.static(path.join(__dirname, "client", "build")));

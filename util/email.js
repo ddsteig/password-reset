@@ -19,11 +19,11 @@ resetPasswordTemplate: (user, url) => {
   const subject = "Forage Password Reset"
   const html = `
   <p>Hey ${user.displayName || user.email},</p>
-  <p>We heard that you lost your Forage password. Sorry about that!</p>
-  <p>But don’t worry! You can use the following link to reset your password:</p>
+  <p>Lost your Forage password? Sorry to hear.</p>
+  <p>Don’t worry! You can use the following link to reset your password:</p>
   <a href=${url}>${url}</a>
   <p>If you don’t use this link within 1 hour, it will expire.</p>
-  <p>Do something outside today! </p>
+  <p>Get back to Foraging for those goodies!</p>
   <p>–Your friends at Forage</p>
   `
 
