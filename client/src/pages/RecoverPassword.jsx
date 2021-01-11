@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { Button, GhostInput } from "../styles/styledComponents"
 import styled from "styled-components"
+import AppAppBar from "../views/AppAppBar";
 
 // MOVE TO REDUX
 import axios from "axios"
@@ -77,6 +78,8 @@ class RecoverPassword extends Component {
     const { email, submitted } = this.state
 
     return (
+      <>
+      <AppAppBar/>
       <RecoverPasswordStyles>
         <h3>Reset your password</h3>
         {submitted ? (
@@ -109,6 +112,7 @@ class RecoverPassword extends Component {
           </div>
         )}
       </RecoverPasswordStyles>
+      </>
     )
   }
 }
