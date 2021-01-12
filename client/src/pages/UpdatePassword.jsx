@@ -28,10 +28,10 @@ class UpdatePassword extends Component {
     console.log(userId)
     console.log(token)
     console.log(password)
-    
+
     axios.post(`/api/password/reset/${userId}/${token}`,
-        { password }
-      )
+      { password }
+    )
       .then(res => res)
       .catch(err => console.warn("ERROR FROM SERVER UPDATING PASSWORD:", err))
     this.setState({ submitted: !this.state.submitted })
@@ -41,60 +41,64 @@ class UpdatePassword extends Component {
     const { submitted } = this.state
 
     return (
-      <UpdatePasswordStyles>
-        <h3 style={{ paddingBottom: "1.25rem" }}>Update your password</h3>
-        {submitted ? (
-          <div className="reset-password-form-sent-wrapper">
-            <p>Your password has been saved.</p>
-            <Link to="/loginPage" className="ghost-btn">
-              Sign back in
+      <>
+        <AppAppBar />
+
+        <UpdatePasswordStyles>
+          <h3 style={{ paddingBottom: "1.25rem" }}>Update your Password.</h3>
+          {submitted ? (
+            <div className="reset-password-form-sent-wrapper">
+              <p>Your password has been saved.</p>
+              <Link to="/loginPage" className="ghost-btn">
+                Sign back in.
             </Link>
-          </div>
-        ) : (
-            <div className="reset-password-form-wrapper">
-              <form
-                onSubmit={this.updatePassword}
-                style={{ paddingBottom: "1.5rem" }}
-              >
-                <GhostInput
-                  onChange={this.handleChange("password")}
-                  value={this.state.password}
-                  placeholder="New password"
-                  type="password"
-                />
-                <GhostInput
-                  onChange={this.handleChange("confirmPassword")}
-                  value={this.state.confirmPassword}
-                  placeholder="Confirm password"
-                  type="password"
-                />
-
-                <Button className="btn-primary password-reset-btn">
-                  Update password
-              </Button>
-              </form>
-
-              <p
-                style={{
-                  fontSize: "1rem",
-                  maxWidth: "420px",
-                  paddingLeft: "0.5rem"
-                }}
-              >
-                Make sure it's at least 8 characters including a number and a
-              lowercase letter. Read some documentation on{" "}
-                <a
-                  href="https://help.github.com/articles/creating-a-strong-password/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            </div>
+          ) : (
+              <div className="reset-password-form-wrapper">
+                <form
+                  onSubmit={this.updatePassword}
+                  style={{ paddingBottom: "1.5rem" }}
                 >
-                  safer password practices
+                  <GhostInput
+                    onChange={this.handleChange("password")}
+                    value={this.state.password}
+                    placeholder="New password"
+                    type="password"
+                  />
+                  <GhostInput
+                    onChange={this.handleChange("confirmPassword")}
+                    value={this.state.confirmPassword}
+                    placeholder="Confirm password"
+                    type="password"
+                  />
+
+                  <Button className="btn-primary password-reset-btn">
+                    Update Password
+              </Button>
+                </form>
+
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    maxWidth: "420px",
+                    paddingLeft: "0.5rem"
+                  }}
+                >
+                  Make sure it's at least 8 characters including a number and a
+              lowercase letter. Read some documentation on{" "}
+                  <a
+                    href="https://help.github.com/articles/creating-a-strong-password/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    safer password practices
               </a>
               .
             </p>
-            </div>
-          )}
-      </UpdatePasswordStyles>
+              </div>
+            )}
+        </UpdatePasswordStyles>
+      </>
     )
   }
 }
