@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Button, GhostInput } from "../styles/styledComponents"
 import { SERVER_URI } from "../config/"
 import PropTypes from "prop-types"
+import AppAppBar from "../views/AppAppBar";
 
 import { RecoverPasswordStyles as UpdatePasswordStyles } from "./RecoverPassword"
 

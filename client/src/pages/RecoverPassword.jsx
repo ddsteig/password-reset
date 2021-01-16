@@ -1,12 +1,11 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { Button, GhostInput } from "../styles/styledComponents"
 import styled from "styled-components"
 import AppAppBar from "../views/AppAppBar";
-
-// MOVE TO REDUX
 import axios from "axios"
-import { SERVER_URI } from "../config/"
+// import { SERVER_URI } from "../config/"
+
 
 export const RecoverPasswordStyles = styled.div`
   height: 100%;
@@ -56,26 +55,31 @@ export const RecoverPasswordStyles = styled.div`
   }
 `
 
-class RecoverPassword extends Component {
-  state = {
-    email: "",
-    submitted: false
+// class RecoverPassword extends Component {
+function RecoverPassword() {
+
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  // state = {
+  //   email: "",
+  //   submitted: false
+  // }
+
+  const handleChange = e => {
+    setEmail(e.target.value)
   }
 
-  handleChange = e => {
-    this.setState({ email: e.target.value })
-  }
-
-  sendPasswordResetEmail = e => {
+  const sendPasswordResetEmail = e => {
     e.preventDefault()
-    const { email } = this.state
+    // const { email } = this.state
     axios.post(`/api/reset_password/user/${email}`)
     console.log(email)
-    this.setState({ email: "", submitted: true })
+    setEmail('')
+    setSubmitted(true)
   }
 
-  render() {
-    const { email, submitted } = this.state
+  // render() {
+    // const { email, submitted } = this.state
 
     return (
       <>
@@ -98,9 +102,9 @@ class RecoverPassword extends Component {
               It happens to the best of us. Enter your email and we'll send you
               reset instructions.
             </p>
-            <form onSubmit={this.sendPasswordResetEmail}>
+            <form onSubmit={sendPasswordResetEmail}>
               <GhostInput
-                onChange={this.handleChange}
+                onChange={handleChange}
                 value={email}
                 placeholder="Email address"
               />
@@ -114,7 +118,7 @@ class RecoverPassword extends Component {
       </RecoverPasswordStyles>
       </>
     )
-  }
+  // }
 }
 
 export default RecoverPassword
