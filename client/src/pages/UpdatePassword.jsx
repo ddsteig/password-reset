@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { Button, GhostInput } from "../styles/styledComponents"
@@ -10,21 +10,26 @@ import { RecoverPasswordStyles as UpdatePasswordStyles } from "./RecoverPassword
 
 // SERVER_URI = "https://forage-2020-react.herokuapp.com"
 
-class UpdatePassword extends Component {
-  state = {
-    password: "",
-    confirmPassword: "",
-    submitted: false
+// class UpdatePassword extends Component {
+function UpdatePassword() {
+
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  // state = {
+  //   password: "",
+  //   confirmPassword: "",
+  //   submitted: false
+  // }
+
+  const handleChange = e => {
+    setEmail(e.target.value)
   }
 
-  handleChange = key => e => {
-    this.setState({ [key]: e.target.value })
-  }
-
-  updatePassword = e => {
+  const updatePassword = e => {
     e.preventDefault()
-    const { userId, token } = this.props.match.params
-    const { password } = this.state
+    const { userId, token } = props.match.params
+    // const { password } = this.state
 
     console.log(userId)
     console.log(token)
@@ -35,11 +40,11 @@ class UpdatePassword extends Component {
     )
       .then(res => res)
       .catch(err => console.warn("ERROR FROM SERVER UPDATING PASSWORD:", err))
-    this.setState({ submitted: !this.state.submitted })
+    setSubmitted(true)
   }
 
-  render() {
-    const { submitted } = this.state
+  // render() {
+  //   const { submitted } = this.state
 
     return (
       <>
@@ -57,18 +62,18 @@ class UpdatePassword extends Component {
           ) : (
               <div className="reset-password-form-wrapper">
                 <form
-                  onSubmit={this.updatePassword}
+                  onSubmit={updatePassword}
                   style={{ paddingBottom: "1.5rem" }}
                 >
                   <GhostInput
-                    onChange={this.handleChange("password")}
-                    value={this.state.password}
+                    onChange={handleChange("password")}
+                    value={password}
                     placeholder="New password"
                     type="password"
                   />
                   <GhostInput
-                    onChange={this.handleChange("confirmPassword")}
-                    value={this.state.confirmPassword}
+                    onChange={handleChange("confirmPassword")}
+                    value={confirmPassword}
                     placeholder="Confirm password"
                     type="password"
                   />
@@ -102,7 +107,7 @@ class UpdatePassword extends Component {
       </>
     )
   }
-}
+// }
 
 UpdatePassword.propTypes = {
   token: PropTypes.string.isRequired,
