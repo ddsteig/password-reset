@@ -11,8 +11,8 @@ import { RecoverPasswordStyles as UpdatePasswordStyles } from "./RecoverPassword
 // SERVER_URI = "https://forage-2020-react.herokuapp.com"
 
 // class UpdatePassword extends Component {
-function UpdatePassword() {
-
+function UpdatePassword(props) {
+  
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -22,8 +22,14 @@ function UpdatePassword() {
   //   submitted: false
   // }
 
-  const handleChange = e => {
-    setEmail(e.target.value)
+  const handleChangeOne = e => {
+    setPassword(e.target.value)
+    
+  }
+
+  const handleChangeTwo = e => {
+    
+    setConfirmPassword(e.target.value)
   }
 
   const updatePassword = e => {
@@ -36,7 +42,7 @@ function UpdatePassword() {
     console.log(password)
 
     axios.post(`/api/password/reset/${userId}/${token}`,
-      { password }
+      {password}
     )
       .then(res => res)
       .catch(err => console.warn("ERROR FROM SERVER UPDATING PASSWORD:", err))
@@ -66,13 +72,13 @@ function UpdatePassword() {
                   style={{ paddingBottom: "1.5rem" }}
                 >
                   <GhostInput
-                    onChange={handleChange("password")}
+                    onChange={handleChangeOne}
                     value={password}
                     placeholder="New password"
                     type="password"
                   />
                   <GhostInput
-                    onChange={handleChange("confirmPassword")}
+                    onChange={handleChangeTwo}
                     value={confirmPassword}
                     placeholder="Confirm password"
                     type="password"
@@ -109,9 +115,9 @@ function UpdatePassword() {
   }
 // }
 
-UpdatePassword.propTypes = {
-  token: PropTypes.string.isRequired,
-  userId: PropTypes.string.isRequired
-}
+// UpdatePassword.propTypes = {
+//   token: PropTypes.string.isRequired,
+//   userId: PropTypes.string.isRequired
+// }
 
 export default UpdatePassword
