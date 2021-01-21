@@ -60,6 +60,7 @@ export const Form = styled.form`
 
 export const Button = styled.button`
   color: white;
+  background-color: gray;
   border-radius: 5px;
   margin-top: 8px;
   padding: 6px 12px;
