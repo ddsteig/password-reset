@@ -55,15 +55,10 @@ export const RecoverPasswordStyles = styled.div`
   }
 `
 
-// class RecoverPassword extends Component {
 function RecoverPassword() {
 
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  // state = {
-  //   email: "",
-  //   submitted: false
-  // }
 
   const handleChange = e => {
     setEmail(e.target.value)
@@ -71,19 +66,16 @@ function RecoverPassword() {
 
   const sendPasswordResetEmail = e => {
     e.preventDefault()
-    // const { email } = this.state
+
     axios.post(`/api/reset_password/user/${email}`)
     console.log(email)
     setEmail('')
     setSubmitted(true)
   }
 
-  // render() {
-    // const { email, submitted } = this.state
-
-    return (
-      <>
-      <AppAppBar/>
+  return (
+    <>
+      <AppAppBar />
       <RecoverPasswordStyles>
         <h3>Reset your password</h3>
         {submitted ? (
@@ -97,28 +89,27 @@ function RecoverPassword() {
             </Link>
           </div>
         ) : (
-          <div className="reset-password-form-wrapper">
-            <p>
-              It happens to the best of us. Enter your email and we'll send you
-              reset instructions.
+            <div className="reset-password-form-wrapper">
+              <p>
+                It happens to the best of us. Enter your email and we'll send you
+                reset instructions.
             </p>
-            <form onSubmit={sendPasswordResetEmail}>
-              <GhostInput
-                onChange={handleChange}
-                value={email}
-                placeholder="Email address"
-              />
-              <Button className="btn-primary password-reset-btn">
-                Send password reset email
+              <form onSubmit={sendPasswordResetEmail}>
+                <GhostInput
+                  onChange={handleChange}
+                  value={email}
+                  placeholder="Email address"
+                />
+                <Button className="btn-primary password-reset-btn">
+                  Send password reset email
               </Button>
-            </form>
-            <Link to="/loginPage">I remember my password</Link>
-          </div>
-        )}
+              </form>
+              <Link to="/loginPage">I remember my password</Link>
+            </div>
+          )}
       </RecoverPasswordStyles>
-      </>
-    )
-  // }
+    </>
+  )
 }
 
 export default RecoverPassword
