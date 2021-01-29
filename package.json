@@ -37,6 +37,7 @@
     "jwt-decode": "^3.1.2",
     "mongoose": "^5.10.14",
     "morgan": "^1.10.0",
+    "mquery": "^3.2.3",
     "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
