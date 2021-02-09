@@ -17,7 +17,9 @@
 5. [License](#license)
 6. [Questions](#questions)
 
-## Documentation <a name="documentation"></a>
+### Documentation <a name="documentation"></a>
+
+- Known Issue: Calorie calculator not function correctly. Integrating from original project.
 
 ### Description <a name="description"></a>
 
