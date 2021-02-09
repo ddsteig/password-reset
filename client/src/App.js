@@ -8,8 +8,9 @@ import MealPlanPage from "./pages/MealPlanPage";
 import SearchFoodPage from "./pages/SearchFoodPage";
 import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
-import RecoverPassword from "./pages/RecoverPassword"
-import UpdatePassword from "./pages/UpdatePassword"
+import RecoverPassword from "./pages/RecoverPassword";
+import UpdatePassword from "./pages/UpdatePassword";
+import CalorieCalculator from "./pages/CalorieCalculatorPage";
 import Shell from "./Shell";
 
 const UnauthenticatedRoutes = () => (
@@ -22,10 +23,10 @@ const UnauthenticatedRoutes = () => (
         <SignUpPage />
       </Route>
       <Route exact path="/reset_password">
-        <RecoverPassword/>
+        <RecoverPassword />
       </Route>
-      <Route path="/password/reset/:userId/:token" component={UpdatePassword}/>
-        <Route path="/">
+      <Route path="/password/reset/:userId/:token" component={UpdatePassword} />
+      <Route path="/">
         <HomePage />
       </Route>
       <Route path="*">
@@ -60,6 +61,9 @@ const AppRoutes = () => {
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/searchFood">
           <SearchFoodPage />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/calorieCalc">
+          <CalorieCalculator />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/:user">
           <UserPage />

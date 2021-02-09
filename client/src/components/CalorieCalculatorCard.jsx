@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CalcImg from '../images/foodcalc.jpg'
 import CalCalcPopover from './CalCalcPopover';
+import {NavLink} from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -24,19 +25,22 @@ export default function MediaCard() {
 
   return (
     <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          image={CalcImg}
-          title="Calorie Calculator"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Calorie Calculator
+      <CardMedia
+        className={classes.media}
+        image={CalcImg}
+        title="Calorie Calculator"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          Calorie Calculator
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            This is the Calorie Calculator tool that is used to estimate your calorie needs based on your goal
+        <Typography variant="body2" color="textSecondary" component="p">
+          This is the Calorie Calculator tool that is used to estimate your calorie needs based on your goal
           </Typography>
-         <CalCalcPopover></CalCalcPopover>
+        <NavLink to="/calorieCalc" style={{ textDecoration: 'none' }} className=
+          {window.location.pathname === "/calorieCalc"
+            ? "nav-link active"
+            : "nav-link"}/>
         </CardContent>
     </Card>
   );
