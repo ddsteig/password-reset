@@ -51,6 +51,8 @@
 
 - Authentication help from: Dan Kaltenbaugh
 
+- Password Reset integrated concepts from: [Andrew Jarrett](https://github.com/Lambda-School-Labs/LabsPT1_bkwds)
+
 ## Questions <a name="questions"></a>
 
 For any further questions checkout our **github pages**
